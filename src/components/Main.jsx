@@ -1,24 +1,22 @@
-import React from 'react'
-import {Layout} from 'antd';
+import React from 'react';
 import {TopBar,TextArea, ToolBar, BottomBar} from './index.js'
-const { Header, Sider, Content, Footer } = Layout;
 function Main() {
   return (
-   <Layout className='layout'>
-   <Header className="header">
+   <div className='layout'>
+   <div className="header">
    <TopBar/>
-   </Header>
-   <Content>
+   </div>
+   <div className='content'>
     <ToolBar/>
     <TextArea/>
-   </Content>
+   </div>
    {/* <Sider>
     sider
    </Sider> */}
-   <Footer className='footer-container'>
+   <div className='footer-container'>
     <BottomBar/>
-   </Footer>
-   </Layout>
+   </div>
+   </div>
   )
 }
 
