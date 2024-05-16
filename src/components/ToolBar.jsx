@@ -1,9 +1,14 @@
-import React, { useEffect, useContext } from 'react';
+import React, { useEffect, useContext, useState } from 'react';
 import { globalState } from '../context/globalState';
 import { Fonts, TextSize } from '.';
+import { handleBoldClick, handleSpeechToText } from '../utils/helpers';
 function ToolBar() {
+
   const MyContext = useContext(globalState);
-  const {content, setContent} = MyContext;
+  const {setCurrentText, currentText} = MyContext;
+
+  const [isSpeaking, setIsSpeaking] = useState(false)
+  
 
   //REFACTOR THESE FUNCTIONS INTO 1
 
@@ -22,9 +27,8 @@ function ToolBar() {
     dropdownListArrow.classList.toggle("fa-xmark")
   }
 
-  const handleBoldClick = (e) =>{
 
-  }
+
 
   return (
     <div className='toolbar'>
@@ -46,10 +50,12 @@ function ToolBar() {
       <button className='dropdown-toggle'> text size <i className="fa-solid fa-angle-down fa-2xs drop-arrow" onClick={showNumberOptions} style={{margin: "3px"}}></i></button>
          <TextSize/>
       </div>
-      <div className='features'>
-       FEATURES
-      </div>
-     
+        <i class="fa-solid fa-microphone toolbar-icons" onClick={() => handleSpeechToText(isSpeaking, setIsSpeaking, setCurrentText, currentText)}></i>
+ <div className='timer'>
+<div>25</div>
+<div>45</div>
+<div>60</div>
+ </div>
     </div>
   )
 }
