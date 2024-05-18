@@ -1,13 +1,15 @@
 import React, { useEffect, useContext, useState } from 'react';
 import { globalState } from '../context/globalState';
 import { Fonts, TextSize } from '.';
-import { handleBoldClick, handleSpeechToText } from '../utils/helpers';
+import { handleBoldClick, handleSpeechToText, handleTimerUI, handleSelectedTime } from '../utils/helpers';
+import { toBeInTheDOM } from '@testing-library/jest-dom/dist/matchers';
 function ToolBar() {
 
   const MyContext = useContext(globalState);
   const {setCurrentText, currentText} = MyContext;
 
-  const [isSpeaking, setIsSpeaking] = useState(false)
+  const [isSpeaking, setIsSpeaking] = useState(false);
+  const [timerMins, setTimerMins] = useState([25, 45, 60]);
   
 
   //REFACTOR THESE FUNCTIONS INTO 1
@@ -26,7 +28,7 @@ function ToolBar() {
     dropdownList.classList.toggle("dropdown-list-show");
     dropdownListArrow.classList.toggle("fa-xmark")
   }
-
+ 
 
 
 
@@ -52,12 +54,19 @@ function ToolBar() {
       </div>
         <i class="fa-solid fa-microphone toolbar-icons" onClick={() => handleSpeechToText(isSpeaking, setIsSpeaking, setCurrentText, currentText)}></i>
  <div className='timer'>
-<div>25</div>
-<div>45</div>
-<div>60</div>
+ 
+ <div className='timers-container'>
+  <i class="fa-regular fa-hourglass toolbar-icons" onClick={handleTimerUI}></i>
+  { Array.isArray(timerMins) ? 
+    timerMins.map((el,index) =>(<div onClick={(e) => handleSelectedTime(e,index, setTimerMins, timerMins) } key ={index} >
+    {el}
+    </div>)) : <div className='selected-time'>{timerMins}</div>
+}
+ </div>
  </div>
     </div>
   )
 }
 
 export default ToolBar
+
