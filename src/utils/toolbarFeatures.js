@@ -6,13 +6,19 @@ function handleRange(e, featureMode, updateFeatureMode, featureStyle){
     {  const range = selection.getRangeAt(0);
       const extractContents = range.extractContents();
       const newEl = document.createElement("span");
-      console.log(selection.rangeCount)
     
       if(featureMode === "fontFamily" || featureMode === "fontSize"){
          extractContents.childNodes.forEach(el => el.style[featureMode] = "");
          newEl.style[featureMode] = document.querySelector("dropdown-" + featureMode).value;
          newEl.appendChild(extractContents);
       }
+      else if(featureMode === "color"){
+         console.log(e.target.value)
+         extractContents.childNodes.forEach(el => {if(el.style) el.style.color = ""});
+       newEl.style.color = e.target.value;
+       newEl.appendChild(extractContents);
+      }
+
      else{
       e.target.classList.toggle("active");
     updateFeatureMode(!featureMode);

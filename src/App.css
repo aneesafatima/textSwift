@@ -16,6 +16,7 @@
 body{
     color: var(--main-text-color);
     background-color: var(--main-bg-color);
+    transition: all 0.3s linear;
 }
 .dark-mode{
     --main-text-color :  #fff;
@@ -139,14 +140,27 @@ body{
  border: 1px solid var(--gray-border);
  padding:7px;
  cursor: pointer;
- 
  }
 
- /* .color-input{
-    border: 1px solid var(--gray-border);
-    padding:7px;
-    cursor: pointer;
- } */
+input[type = "color"]{
+width : 30px;
+height:30px;
+padding:0;
+padding-top:15px;
+position: relative;
+transition: all 0s linear;
+}
+
+input[type = "color"]::before{
+    content:"A";
+    font-weight:500;
+    position: absolute; 
+   padding-bottom:7px;
+  top: 50%; 
+  left: 50%; 
+  transform: translate(-50%, -50%);
+}
+
 
 /* DROPDOWN MENU */
 
@@ -160,13 +174,9 @@ font-size: 0.8rem;
 outline: 0;
 }
 
-
 .features{
     width:20vw;
 }
-
-
-
 
 
 /* TOOLBAR FEATURES */

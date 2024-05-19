@@ -53,8 +53,7 @@ function ToolBar() {
       <i class="fa-solid fa-align-justify toolbar-icons" onClick={(e) => handleClick(e,isJustifyAlign, setIsJustifyAlign, "justify-align")}></i>
       <i class="fa-solid fa-align-right toolbar-icons" onClick={(e) => handleClick(e,isRightAlign , setIsRightAlign, "right-align")}></i>
       <i class="fa-solid fa-align-center toolbar-icons" onClick={(e) => handleClick(e,isCenterAlign , setIsCenterAlign, "center-align")}></i>
-      {/* <input type="color" className=''/> */}
-     <i class="fa-solid fa-droplet toolbar-icons" onClick={() => handleClick()}></i>
+      <input type="color" className='toolbar-icons text-color' onInput={(e) => handleClick(e, "color")}/>
       <i class="fa-solid fa-fill toolbar-icons" onClick={() => handleClick()}></i>
       <Fonts/>
        <TextSize/>
