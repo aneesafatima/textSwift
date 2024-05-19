@@ -28,16 +28,17 @@ body{
 }
 
 .toolbar{
-    height:12vh;
+    min-height:12vh;
     border:1px solid var(--gray-border);
     margin-top: 20px;
     display: flex;
     flex-wrap: wrap;
     align-items: center;
+    padding:10px 25px;
     justify-content: space-evenly;
 }
 .footer-container{
-    padding:0;
+   
     position: relative;
 }
 .bottom-bar {
@@ -60,10 +61,10 @@ body{
     background-color: gray;
     width: 85vw; /* Set the initial width */
     height: 55vh; /* Set the initial height */
-    resize: none;
+   overflow: hidden;
     padding: 30px;
-    overflow: hidden;
-    display:inline-block
+
+
 }
 .heading{
     width:fit-content;
@@ -140,86 +141,96 @@ body{
  cursor: pointer;
  
  }
- .dropdown-fonts, .dropdown-number{
-    position: relative;
- }
- .dropdown-toggle{
-    font-size: 0.7rem;
-    outline: 0;
-    color:var(--main-text-color);
+
+ /* .color-input{
     border: 1px solid var(--gray-border);
-    background-color: inherit;
-    padding: 8px 6px;
-    padding-right:12px
- }
- .dropdown-list, .dropdown-number-list{
-    position:absolute;
-    top:0;
-    background-color: rgb(243, 240, 240);
-    height:40vh;
-    list-style-type: none;
-    padding: 10px 5px;
-    font-size: 0.8rem;
-    overflow: auto;
-    width:100%;
-    display: none;
- }
-.dropdown-list-item{
-    color:black;
+    padding:7px;
     cursor: pointer;
-    padding: 1px 0;
-    border-bottom: 1px solid rgba(198, 193, 193, 0.806);
-}
-.dropdown-list-item:hover{
-    background-color: rgba(198, 193, 193, 0.806);
-}
-.dropdown-list-show{
-    display: block;
-}
-.drop-arrow{
-position:absolute;
-right:0;
-top:40%;
-margin-left:5px;
-z-index: 1;
+ } */
+
+/* DROPDOWN MENU */
+
+.dropdown-fontFamily , .dropdown-fontSize{
+width:100px;
+padding:7px;
+background-color: var(--main-bg-color);
 cursor: pointer;
+border: 1px solid var(--gray-border);
+font-size: 0.8rem;
+outline: 0;
 }
-::-webkit-scrollbar{
-    width:3px;
-    height:5px;
-}
-::-webkit-scrollbar-thumb {
-    background: #888; /* Color of the scrollbar handle */
-}
-::-webkit-scrollbar-thumb:hover {
-    background: #555; /* Color of the scrollbar handle on hover */
-}
-::-webkit-scrollbar-track {
-    background: #f1f1f1; /* Color of the scrollbar track */
-}
-.fa-xmark{
-   right:5px;
-}
+
+
 .features{
     width:20vw;
-    background-color: lightblue;
-    
 }
-/* .bold{
+
+
+
+
+
+/* TOOLBAR FEATURES */
+
+.bold{
     font-weight: 900;
-} */
-.timer{
-   display: flex; 
 }
-.timer > div{
+.italic{
+  font-style: italic;
+}
+.underline{
+    text-decoration:underline ;
+}
+.left-align{
+    text-align: left;
+    display: block;
+}
+.center-align{
+    text-align: center;
+    display: block;
+}
+.right-align{
+    text-align: right;
+    display: block;
+}
+.justify-align{
+    text-align: justify;
+    display: block;
+}
+.unordered-list{
+    list-style-type: disc;
+    display: list-item;
+}
+.ordered-list{
+    list-style-type: decimal;
+    display: list-item;
+}
+
+.active{
+    background-color: #a4a3a3c0;
+}
+
+/* TIMERS UI  */
+
+
+.timers-container{
+   display: flex; 
+   align-items: center;
+   position: relative;
+   transition: width 0.6s linear
+}
+.timers-container > div{
 margin:5px;
 background-color: var(--main-text-color);
 color: var(--main-bg-color);
-padding:10px;
+padding:12px;
 border-radius: 50%;
 cursor: pointer;
 transition: transform 0.3s linear;
+display:none;
 }
-.timer > div:hover{
+.selected-time{
+    display:block !important;
+}
+.timers-container > div:hover{
 transform: scale(1.1);
 }
