@@ -30,12 +30,12 @@ body{
 
 .toolbar{
     min-height:12vh;
-    border:1px solid var(--gray-border);
+    /* border:1px solid var(--gray-border); */
     margin-top: 20px;
     display: flex;
     flex-wrap: wrap;
     align-items: center;
-    padding:10px 25px;
+    padding:10px 80px;
     justify-content: space-evenly;
 }
 .footer-container{
@@ -59,13 +59,19 @@ body{
     align-items: center;
 }
 .text-area{
-    background-color: gray;
-    width: 85vw; /* Set the initial width */
-    height: 55vh; /* Set the initial height */
+    border: 1px solid rgb(231, 224, 224);
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12);
+    outline: 0;
+    width: 90vw; /* Set the initial width */
+    min-height: 55vh; /* Set the initial height */
    overflow: hidden;
     padding: 30px;
-
-
+    caret-color: var(--gray-border);
+}
+.text-area::selection{
+    background: #64bbf4;
+    color: white;
 }
 .heading{
     width:fit-content;
@@ -93,7 +99,7 @@ body{
     align-items: center;
     justify-content: space-between;
     margin: 0 20px;
-    /* border-bottom: 1px solid var(--main-text-color); */
+    border-bottom: 1px solid gray
    
 }
 .about-heading{
@@ -136,19 +142,22 @@ body{
     }
  .toolbar-icons{
  font-size: 1rem;
- color:var(--main-text-color);
- border: 1px solid var(--gray-border);
+ color:gray;
  padding:7px;
  cursor: pointer;
  }
-
+ .toolbar-icons:hover{
+color:rgb(76, 74, 74);
+ }
+ 
 input[type = "color"]{
 width : 30px;
 height:30px;
 padding:0;
-padding-top:15px;
+padding-top:18px;
 position: relative;
-transition: all 0s linear;
+background-color: transparent;
+border: 0;
 }
 
 input[type = "color"]::before{
@@ -159,12 +168,21 @@ input[type = "color"]::before{
   top: 50%; 
   left: 50%; 
   transform: translate(-50%, -50%);
+  
 }
 
+input[type = "color"]:last-of-type::before{
+   content: url("./assets/Fill-icon.svg");
+   font-size:0.9rem;
+   padding-bottom:5px;
+  
+}
+ 
 
 /* DROPDOWN MENU */
 
 .dropdown-fontFamily , .dropdown-fontSize{
+color:gray;
 width:100px;
 padding:7px;
 background-color: var(--main-bg-color);
@@ -173,10 +191,14 @@ border: 1px solid var(--gray-border);
 font-size: 0.8rem;
 outline: 0;
 }
+.dropdown-item{
+    color: var(--main-text-color);
+}
 
 .features{
     width:20vw;
 }
+
 
 
 /* TOOLBAR FEATURES */

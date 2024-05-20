@@ -12,10 +12,10 @@ function handleRange(e, featureMode, updateFeatureMode, featureStyle){
          newEl.style[featureMode] = document.querySelector("dropdown-" + featureMode).value;
          newEl.appendChild(extractContents);
       }
-      else if(featureMode === "color"){
+      else if(featureMode === "color" || featureMode === "backgroundColor"){
          console.log(e.target.value)
-         extractContents.childNodes.forEach(el => {if(el.style) el.style.color = ""});
-       newEl.style.color = e.target.value;
+         extractContents.childNodes.forEach(el => {if(el.style) el.style[featureMode] = ""});
+       newEl.style[featureMode] = e.target.value;
        newEl.appendChild(extractContents);
       }
 
