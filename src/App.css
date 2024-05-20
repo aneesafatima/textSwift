@@ -146,7 +146,7 @@ body{
  padding:7px;
  cursor: pointer;
  }
- .toolbar-icons:hover{
+ .toolbar-icons:hover, .toolbar-icons:active{
 color:rgb(76, 74, 74);
  }
  
@@ -204,7 +204,7 @@ outline: 0;
 /* TOOLBAR FEATURES */
 
 .bold{
-    font-weight: 900;
+    font-weight: 700;
 }
 .italic{
   font-style: italic;

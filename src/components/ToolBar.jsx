@@ -18,32 +18,10 @@ function ToolBar() {
   const [isJustifyAlign, setIsJustifyAlign] = useState(false);
   const [isCenterAlign, setIsCenterAlign] = useState(false);
   const [isRightAlign , setIsRightAlign] = useState(false);
-  
-
-  //REFACTOR THESE FUNCTIONS INTO 1
-
-  const showFontsOptions = (e) =>{
-    const fontsList = document.querySelector(".dropdown-fonts");
-    const dropdownList = fontsList.querySelector(".dropdown-list");
-    const dropdownListArrow = fontsList.querySelector(".fa-angle-down");
-    dropdownList.classList.toggle("dropdown-list-show");
-    dropdownListArrow.classList.toggle("fa-xmark")
-  }
-  const showNumberOptions = (e) =>{
-    const textSizeList = document.querySelector(".dropdown-number")
-    const dropdownList = textSizeList.querySelector(".dropdown-list");
-    const dropdownListArrow = textSizeList.querySelector(".fa-angle-down");
-    dropdownList.classList.toggle("dropdown-list-show");
-    dropdownListArrow.classList.toggle("fa-xmark")
-  }
- 
-
-
 
   return (
     <div className='toolbar'>
-      <i class="fa-regular fa-copy toolbar-icons"></i>
-      <i class="fa-solid fa-trash toolbar-icons"></i>
+      <i class="fa-regular fa-copy toolbar-icons" onClick={(e) => handleClick(e,"copy")}></i>
       <i className="fa-solid fa-bold toolbar-icons"  onClick={(e) =>  handleClick(e,isBold, setIsBold, "bold")}></i>
       <i class="fa-solid fa-italic toolbar-icons"  onClick={(e) => handleClick(e,isItalic, setIsItalic, "italic")}></i>
       <i class="fa-solid fa-underline toolbar-icons" onClick={(e) => handleClick(e,isUnderline, setIsUnderline, "underline")}></i>
@@ -54,13 +32,14 @@ function ToolBar() {
       <i class="fa-solid fa-align-right toolbar-icons" onClick={(e) => handleClick(e,isRightAlign , setIsRightAlign, "right-align")}></i>
       <i class="fa-solid fa-align-center toolbar-icons" onClick={(e) => handleClick(e,isCenterAlign , setIsCenterAlign, "center-align")}></i>
       <input type="color" className='toolbar-icons text-color' onInput={(e) => handleClick(e, "color")}/>
-      <i class="fa-solid fa-fill toolbar-icons" onClick={() => handleClick()}></i>
+      <input type="color" className='toolbar-icons text-color' onInput={(e) => handleClick(e, "backgroundColor")}/>
       <Fonts/>
        <TextSize/>
         <i class="fa-solid fa-microphone toolbar-icons" onClick={() => handleSpeechToText(isSpeaking, setIsSpeaking)}></i>
  <div className='timer'>
 <Timer/>
  </div>
+ <i class="fa-solid fa-trash toolbar-icons" onClick={(e) => handleClick(e,"delete")}></i>
     </div>
   )
 }
