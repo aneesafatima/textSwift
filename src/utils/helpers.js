@@ -26,25 +26,6 @@ export const allFontsLink = (arr) =>{
  document.head.appendChild(linkElement);
 }
 
-//HANDLE BOLD FEATURE 
-
-export const handleBoldClick =  () =>{
-  
-
-const selection = window.getSelection();
-if(selection.rangeCount> 0){
-  console.log("hello from bold text");
-const range = selection.getRangeAt(0);
-const newEl = document.createElement("strong");
-// newEl.textContent = range.toString();
-newEl.appendChild(range.extractContents())
-range.deleteContents();
-range.insertNode(newEl)
-selection.addRange(range)
-}
-
-}
-
 
 //VOICE RECOGNITION
 

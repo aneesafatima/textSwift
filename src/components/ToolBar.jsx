@@ -1,12 +1,9 @@
-import React, { useEffect, useContext, useState } from 'react';
-import { globalState } from '../context/globalState';
+import React, {  useState } from 'react';
 import { Fonts, TextSize, Timer } from '.';
 import { handleSpeechToText } from '../utils/helpers';
 import { handleClick } from '../utils/toolbarFeatures';
 
 function ToolBar() {
-
-  // const MyContext = useContext(globalState);
 
   const [isSpeaking, setIsSpeaking] = useState(false);
   const [isBold , setIsBold] = useState(false);

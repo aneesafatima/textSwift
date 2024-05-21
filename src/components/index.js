@@ -4,3 +4,6 @@ export {  default as TopBar } from './TopBar.jsx'
 export {  default as TextArea } from './TextArea.jsx';
 export {  default as ToolBar } from './ToolBar.jsx';
 export {  default as BottomBar } from './BottomBar.jsx';
+export {  default as Fonts } from './Fonts.jsx';
+export {  default as TextSize } from './TextSize.jsx';
+export {  default as Timer } from './Timer.jsx';

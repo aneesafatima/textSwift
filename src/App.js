@@ -1,5 +1,5 @@
 import './App.css';
-import 'antd/dist/reset.css';
+
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { Main, About } from './components';
 function App() {

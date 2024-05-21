@@ -10,9 +10,7 @@ function Main() {
     <ToolBar/>
     <TextArea/>
    </div>
-   {/* <Sider>
-    sider
-   </Sider> */}
+   
    <div className='footer-container'>
     <BottomBar/>
    </div>
