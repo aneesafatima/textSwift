@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import { allFontsLink } from '../utils/helpers';
+import { handleClick } from '../utils/toolbarFeatures';
 function Fonts() {
     
 
@@ -15,7 +16,7 @@ function Fonts() {
     },[])
     
   return (
-    <select className='dropdown-fontFamily'>
+    <select className='dropdown-fontFamily' onChange={(e) => handleClick(e, "fontFamily")}>
       <option selected disabled value="">select font</option>
         {
             fontsNames?.map((el, i) => (<option className='dropdown-item' key={i} style={{fontFamily: el.family}}>{el.family} </option>))

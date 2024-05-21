@@ -115,6 +115,7 @@ body{
     font-weight: 300;
 }
 .about-heading{
+    font-family: var(--roboto-font);
     font-weight: 400;
     cursor: pointer;
     color: inherit;
@@ -196,11 +197,14 @@ input[type = "color"]:last-of-type::before{
 color:gray;
 width:100px;
 padding:7px;
-background-color: var(--main-bg-color);
+/* background-color: inherit; */
 cursor: pointer;
 border: 1px solid var(--gray-border);
 font-size: 0.8rem;
 outline: 0;
+}
+.dropdown-fontFamily:hover , .dropdown-fontFamily:active, .dropdown-fontSize:hover, .dropdown-fontSize:active{
+    color:rgb(76, 74, 74);
 }
 .dropdown-item{
     color: var(--main-text-color);
@@ -262,6 +266,7 @@ outline: 0;
    transition: width 0.6s linear
 }
 .timers-container > div{
+font-family: var(--lexend-font);
 margin:5px;
 background-color: var(--main-text-color);
 color: var(--main-bg-color);

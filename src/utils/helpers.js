@@ -29,22 +29,21 @@ export const allFontsLink = (arr) =>{
 
 //VOICE RECOGNITION
 
-export const handleSpeechToText = (isSpeaking, setIsSpeaking, setCurrentText, currentText) => {
-  const prevText = currentText;
+export const handleSpeechToText = (isSpeaking, setIsSpeaking) => {
 console.log("Start saying something ! ");
 
 console.log(isSpeaking)
 let generatedText="";
+const textArea = document.querySelector(".text-area");
 const recognition = new SpeechRecognition();
 recognition.continuous = true;
 recognition.lang = "en-US";
 !isSpeaking ? recognition.start() :  recognition.abort();
 recognition.onresult = function(event){
-  console.log(generatedText)
-  console.log(event.results)
-
+  if(event.results)
   generatedText = event.results[event.results?.length - 1][0].transcript+ ' ';
-  setCurrentText(prev => {return generatedText==='' ? prev : prev + ' ' + generatedText });
+  textArea.textContent += generatedText;
+
  
  
 }
