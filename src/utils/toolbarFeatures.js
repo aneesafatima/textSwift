@@ -1,11 +1,13 @@
-export function handleClick(e, featureMode, updateFeatureMode, featureStyle) {
+export  function handleClick(e, featureMode, updateFeatureMode, featureStyle) {
   const selection = window.getSelection();
   if (selection.rangeCount > 0) {
     const range = selection.getRangeAt(0);
 
     if(featureMode === "copy" || featureMode === "delete")
-      {
-          featureMode === "copy" ? navigator.clipboard.writeText(range.toString()) : selection.deleteFromDocument();;
+      {   if (featureMode === "copy")
+        navigator.clipboard.writeText(range.toString()) ;
+        else
+        selection.deleteFromDocument();
           return
       } 
    
@@ -13,18 +15,21 @@ export function handleClick(e, featureMode, updateFeatureMode, featureStyle) {
       const newEl = document.createElement('span'); 
 
       if (featureMode === 'fontFamily' || featureMode === 'fontSize') {
-      extractContents.childNodes.forEach((el) => (el.style[featureMode] = ''));
+      deletePreviousStyles(extractContents, featureMode)
       newEl.style[featureMode] = document.querySelector(
-        'dropdown-' + featureMode
-      ).value;
+        '.dropdown-' + featureMode
+      ).value + "px";
       newEl.appendChild(extractContents);
     } 
+    else if(featureMode === "paste"){
+          navigator.clipboard.readText()
+          .then(val => newEl.textContent = val )
+          .catch(err => console.log("Text could not be pasted !"))
+        
+    }
     
     else if (featureMode === 'color' || featureMode === 'backgroundColor') {
-      console.log(e.target.value);
-      extractContents.childNodes.forEach((el) => {
-        if (el.style) el.style[featureMode] = '';
-      });
+     deletePreviousStyles(extractContents, featureMode);
       newEl.style[featureMode] = e.target.value;
       newEl.appendChild(extractContents);
     } 
@@ -43,4 +48,10 @@ export function handleClick(e, featureMode, updateFeatureMode, featureStyle) {
     range.insertNode(newEl);
     selection.addRange(range);
   }
+}
+
+const deletePreviousStyles = (extractContents, featureMode) => {
+  extractContents.childNodes.forEach((el) => {
+    if (el.style) el.style[featureMode] = '';
+  })
 }

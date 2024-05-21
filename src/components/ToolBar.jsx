@@ -19,6 +19,7 @@ function ToolBar() {
   return (
     <div className='toolbar'>
       <i class="fa-regular fa-copy toolbar-icons" onClick={(e) => handleClick(e,"copy")}></i>
+      <i class="fa-regular fa-paste toolbar-icons" onClick={(e) => handleClick(e,"paste")}></i>
       <i className="fa-solid fa-bold toolbar-icons"  onClick={(e) =>  handleClick(e,isBold, setIsBold, "bold")}></i>
       <i class="fa-solid fa-italic toolbar-icons"  onClick={(e) => handleClick(e,isItalic, setIsItalic, "italic")}></i>
       <i class="fa-solid fa-underline toolbar-icons" onClick={(e) => handleClick(e,isUnderline, setIsUnderline, "underline")}></i>
