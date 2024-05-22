@@ -16,9 +16,11 @@ export  function handleClick(e, featureMode, updateFeatureMode, featureStyle) {
 
       if (featureMode === 'fontFamily' || featureMode === 'fontSize') {
       deletePreviousStyles(extractContents, featureMode)
-      newEl.style[featureMode] = document.querySelector(
+      const style = document.querySelector(
         '.dropdown-' + featureMode
-      ).value + "px";
+      ).value;
+      console.log(featureMode , style)
+      newEl.style[featureMode] = featureMode === "fontSize" ? style + "px" : style;
       newEl.appendChild(extractContents);
     } 
     else if(featureMode === "paste"){
@@ -54,4 +56,11 @@ const deletePreviousStyles = (extractContents, featureMode) => {
   extractContents.childNodes.forEach((el) => {
     if (el.style) el.style[featureMode] = '';
   })
+}
+
+export const handleDistractionMode = (e) =>{
+const topBar = document.querySelector(".top-bar");
+const bottomBar = document.querySelector(".bottom-bar");
+topBar.classList.toggle("distraction-mode-toggle")
+bottomBar.classList.toggle("distraction-mode-toggle")
 }

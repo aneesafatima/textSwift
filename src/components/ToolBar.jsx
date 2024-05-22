@@ -1,7 +1,7 @@
 import React, {  useState } from 'react';
 import { Fonts, TextSize, Timer } from '.';
 import { handleSpeechToText } from '../utils/helpers';
-import { handleClick } from '../utils/toolbarFeatures';
+import { handleClick, handleDistractionMode } from '../utils/toolbarFeatures';
 
 function ToolBar() {
 
@@ -18,8 +18,12 @@ function ToolBar() {
 
   return (
     <div className='toolbar'>
-      <i class="fa-regular fa-copy toolbar-icons" onClick={(e) => handleClick(e,"copy")}></i>
+      <div>
+       <i class="fa-regular fa-copy toolbar-icons" onClick={(e) => handleClick(e,"copy")}></i>
       <i class="fa-regular fa-paste toolbar-icons" onClick={(e) => handleClick(e,"paste")}></i>
+      </div>
+
+       <div className='text-editing-features'>
       <i className="fa-solid fa-bold toolbar-icons"  onClick={(e) =>  handleClick(e,isBold, setIsBold, "bold")}></i>
       <i class="fa-solid fa-italic toolbar-icons"  onClick={(e) => handleClick(e,isItalic, setIsItalic, "italic")}></i>
       <i class="fa-solid fa-underline toolbar-icons" onClick={(e) => handleClick(e,isUnderline, setIsUnderline, "underline")}></i>
@@ -31,13 +35,20 @@ function ToolBar() {
       <i class="fa-solid fa-align-center toolbar-icons" onClick={(e) => handleClick(e,isCenterAlign , setIsCenterAlign, "center-align")}></i>
       <input type="color" className='toolbar-icons text-color' onInput={(e) => handleClick(e, "color")}/>
       <input type="color" className='toolbar-icons text-color' onInput={(e) => handleClick(e, "backgroundColor")}/>
+      </div>
+
+       <div className='dropdown-features'>
       <Fonts/>
-       <TextSize/>
+       <TextSize/> 
+      </div> 
+       <div className='extra-features'>
+        <div className='timer'>
+       <Timer/>
+       </div>
+       <i class="fa-regular fa-eye-slash toolbar-icons" onClick={handleDistractionMode}></i>
         <i class="fa-solid fa-microphone toolbar-icons" onClick={() => handleSpeechToText(isSpeaking, setIsSpeaking)}></i>
- <div className='timer'>
-<Timer/>
- </div>
- <i class="fa-solid fa-trash toolbar-icons" onClick={(e) => handleClick(e,"delete")}></i>
+       <i class="fa-solid fa-trash toolbar-icons" onClick={(e) => handleClick(e,"delete")}></i>
+       </div>
     </div>
   )
 }

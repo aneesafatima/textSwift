@@ -16,10 +16,11 @@ function Timer() {
     <div className='timers-container'>
   <i class="fa-regular fa-hourglass toolbar-icons" onClick={handleTimerUI}></i>
   { Array.isArray(timerMins) ? 
-    timerMins.map((el,index) =>(<div onClick={(e) => handleSelectedTime(e,index, setTimerMins, timerMins) } key ={index} >
+    timerMins.map((el,index) =>(<div className="timer-selections" onClick={(e) => handleSelectedTime(e,index, setTimerMins, timerMins) } key ={index} >
     {el}
-    </div>)) : <div className='selected-time'>{timerMins}</div>
-}
+    </div>)) : <div className='selected-time timer-selections'>{timerMins}</div>
+    
+} 
  </div>
   )
 }
