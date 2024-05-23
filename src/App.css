@@ -19,7 +19,7 @@ body{
     background-color: var(--main-bg-color);
     transition: all 0.3s linear;
 }
-input {
+input[type = "color"] {
     -webkit-user-select: text; /* Chrome, Opera, Safari */
     -moz-user-select: text; /* Firefox 2+ */
     -ms-user-select: text; /* IE 10+ */
