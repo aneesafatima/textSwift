@@ -22,7 +22,7 @@ function TopBar() {
     <div className='top-bar'>
       <span className='status'>{status}</span>
       <div className='heading'>  
-        <h1 className='title'>textswift
+        <h1 className='title'>textSwift
         <span>Subtle.Seamless.Craft</span></h1>
       </div>
       <div className='header-right-section'>

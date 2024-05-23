@@ -72,7 +72,6 @@ setIsSpeaking(prev => !prev);
 
 export const handleTimerUI = (e) =>{
 const timers = document.querySelectorAll(".timers-container > div");
-console.log(timers)
 e.target.style.display = "none";
 timers.forEach(el => el.style.display = "block")
 

@@ -5,12 +5,14 @@ import {globalState} from "../context/globalState"
 function Timer() {
     const [timerMins, setTimerMins] = useState([25, 45, 60]);
     const MyContext = useContext(globalState);
-    const {setTimerStatus} = MyContext;
+    const {setTimerStatus, timerStatus} = MyContext;
     useEffect(() =>{
     if(Array.isArray(timerMins))
       setTimerStatus("timer is off 🕛")
     else
-    setTimerStatus("timer in progress 🕛")
+      setTimerStatus("timer in progress 🕛");
+    
+    
     }, [timerMins])
   return (
     <div className='timers-container'>
@@ -18,7 +20,7 @@ function Timer() {
   { Array.isArray(timerMins) ? 
     timerMins.map((el,index) =>(<div className="timer-selections" onClick={(e) => handleSelectedTime(e,index, setTimerMins, timerMins) } key ={index} >
     {el}
-    </div>)) : <div className='selected-time timer-selections'>{timerMins}</div>
+    </div>) ) : <div className='selected-time timer-selections'>{timerMins}</div>
     
 } 
  </div>
