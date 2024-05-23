@@ -57,3 +57,8 @@ To run the project in your local environment, follow these steps:
 ---
 
 Enjoy using TextSwift! If you have any suggestions or encounter any issues, feel free to contribute or open an issue on GitHub.
+
+## 🎥 A short demo 
+
+https://github.com/aneesa04/TextSwift/assets/161751452/21cdebff-42ed-4f4c-b60e-dad5ad509395
+
