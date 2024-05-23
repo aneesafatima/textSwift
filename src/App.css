@@ -37,7 +37,20 @@ body{
     margin: 0 20px;
     border-bottom: 1px solid var(--footer-bg);
     transition: all 0.3s linear;
-   
+    position: relative;
+}
+.status{
+    position: absolute;
+    background-color:  #817e7e99;
+    color: #fff;
+    padding: 3px 5px;
+    font-size: 0.7rem;
+    font-family: var(--roboto-font);
+    border-radius: 12px;
+    top: -400px;
+    left:50%;
+    transform: translate(-50%);
+    transition: top 0.2s linear;
 }
 .toolbar{
     min-height:12vh;
