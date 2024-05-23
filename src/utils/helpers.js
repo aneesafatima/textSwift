@@ -1,13 +1,9 @@
 import timerFinishedAudio from '../assets/timerfinished.mp3'
+let SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
 
-let SpeechRecognition;
-
-
-window.addEventListener("DOMContentLoaded", () => {
-   SpeechRecognition =
-  window.SpeechRecognition || window.webkitSpeechRecognition;
-
-})
+const recognition = new SpeechRecognition();
+recognition.continuous = true;
+recognition.lang = "en-US";
 
 export const toggleDarkMode = () =>{
     const body = document.body;
@@ -18,34 +14,49 @@ export const toggleDarkMode = () =>{
 
 
 export const allFontsLink = (arr) =>{
-  const linkURL = `http://fonts.googleapis.com/css?family=${arr.join('|')}`
- const linkElement = document.createElement("link");
- linkElement.href = linkURL;
- linkElement.type = "text/css"
- linkElement.rel = "stylesheet"
- document.head.appendChild(linkElement);
+  let i=0;
+  let aschii = 65;
+  let char = String.fromCharCode(aschii);
+  let linkURL = `http://fonts.googleapis.com/css?family=`;
+  let linkElement;
+  arr.forEach(el => {
+    if(i<10 && (el.startsWith(char.toLowerCase()) || el.startsWith(char)))
+      {  
+         linkURL += `${el}|`.replace(/ /g, "+");
+         i++;
+      }
+     
+    else if(i==10){ 
+      linkElement = document.createElement("link");
+      linkElement.href = linkURL;
+      linkElement.type = "text/css"
+      linkElement.rel = "stylesheet"
+      document.head.appendChild(linkElement);
+      linkURL = `http://fonts.googleapis.com/css?family=`;
+      i=0;
+      aschii+=1;
+      char = String.fromCharCode(aschii);
+    }
+  })
+
+
+
 }
 
 
 //VOICE RECOGNITION
 
 export const handleSpeechToText = (isSpeaking, setIsSpeaking) => {
-console.log("Start saying something ! ");
-
+const textArea = document.querySelector(".text-area");
+const selection = window.getSelection();
 console.log(isSpeaking)
 let generatedText="";
-const textArea = document.querySelector(".text-area");
-const recognition = new SpeechRecognition();
-recognition.continuous = true;
-recognition.lang = "en-US";
+
 !isSpeaking ? recognition.start() :  recognition.abort();
 recognition.onresult = function(event){
   if(event.results)
   generatedText = event.results[event.results?.length - 1][0].transcript+ ' ';
   textArea.textContent += generatedText;
-
- 
- 
 }
 recognition.onerror = function(event) {
   console.error('Speech recognition error: ', event.error);
