@@ -1,47 +1,40 @@
-export  function handleClick(e, featureMode, updateFeatureMode, featureStyle) {
+export function handleClick(e, featureMode, updateFeatureMode, featureStyle) {
   const selection = window.getSelection();
   if (selection.rangeCount > 0) {
     const range = selection.getRangeAt(0);
 
-    if(featureMode === "copy" || featureMode === "delete")
-      {   if (featureMode === "copy")
-        navigator.clipboard.writeText(range.toString()) ;
-        else
-        selection.deleteFromDocument();
-          return
-      } 
-   
-      const extractContents = range.extractContents();
-      const newEl = document.createElement('span'); 
-
-      if (featureMode === 'fontFamily' || featureMode === 'fontSize') {
-      deletePreviousStyles(extractContents, featureMode)
-      const style = document.querySelector(
-        '.dropdown-' + featureMode
-      ).value;
-      console.log(featureMode , style)
-      newEl.style[featureMode] = featureMode === "fontSize" ? style + "px" : style;
-      newEl.appendChild(extractContents);
-    } 
-    else if(featureMode === "paste"){
-          navigator.clipboard.readText()
-          .then(val => newEl.textContent = val )
-          .catch(err => console.log("Text could not be pasted !"))
-        
+    if (featureMode === "copy" || featureMode === "delete") {
+      if (featureMode === "copy")
+        navigator.clipboard.writeText(range.toString());
+      else selection.deleteFromDocument();
+      return;
     }
-    
-    else if (featureMode === 'color' || featureMode === 'backgroundColor') {
-     deletePreviousStyles(extractContents, featureMode);
+
+    const extractContents = range.extractContents();
+    const newEl = document.createElement("span");
+
+    if (featureMode === "fontFamily" || featureMode === "fontSize") {
+      deletePreviousStyles(extractContents, featureMode);
+      const style = document.querySelector(".dropdown-" + featureMode).value;
+      console.log(featureMode, style);
+      newEl.style[featureMode] =
+        featureMode === "fontSize" ? style + "px" : style;
+      newEl.appendChild(extractContents);
+    } else if (featureMode === "paste") {
+      navigator.clipboard
+        .readText()
+        .then((val) => (newEl.textContent = val))
+        .catch((err) => console.log("Text could not be pasted !"));
+    } else if (featureMode === "color" || featureMode === "backgroundColor") {
+      deletePreviousStyles(extractContents, featureMode);
       newEl.style[featureMode] = e.target.value;
       newEl.appendChild(extractContents);
-    } 
-    
-    else {
-      e.target.classList.toggle('active');
+    } else {
+      e.target.classList.toggle("active");
       updateFeatureMode(!featureMode);
       if (featureMode)
         extractContents
-          .querySelectorAll('.' + featureStyle)
+          .querySelectorAll("." + featureStyle)
           .forEach((el) => el.classList.remove(featureStyle));
       else newEl.classList.add(featureStyle);
       newEl.appendChild(extractContents);
@@ -54,13 +47,18 @@ export  function handleClick(e, featureMode, updateFeatureMode, featureStyle) {
 
 const deletePreviousStyles = (extractContents, featureMode) => {
   extractContents.childNodes.forEach((el) => {
-    if (el.style) el.style[featureMode] = '';
-  })
-}
+    if (el.style) el.style[featureMode] = "";
+  });
+};
 
-export const handleDistractionMode = (e) =>{
-const topBar = document.querySelector(".top-bar");
-const bottomBar = document.querySelector(".bottom-bar");
-topBar.classList.toggle("distraction-mode-toggle")
-bottomBar.classList.toggle("distraction-mode-toggle")
-}
+export const handleDistractionMode = (e) => {
+  const topBar = document.querySelector(".top-bar");
+  const bottomBar = document.querySelector(".bottom-bar");
+  topBar.classList.toggle("distraction-mode-toggle");
+  bottomBar.classList.toggle("distraction-mode-toggle");
+};
+
+export const saveToLocalStorage = () => {
+  const textEl = document.querySelector(".text-area");
+localStorage.setItem("savedText", textEl?.textContent);
+};

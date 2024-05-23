@@ -1,11 +1,12 @@
 import React, {  useState } from 'react';
 import { Fonts, TextSize, Timer } from '.';
 import { handleSpeechToText } from '../utils/helpers';
-import { handleClick, handleDistractionMode } from '../utils/toolbarFeatures';
+import { handleClick, handleDistractionMode, saveToLocalStorage } from '../utils/toolbarFeatures';
 
 function ToolBar() {
 
   const [isSpeaking, setIsSpeaking] = useState(false);
+  console.log(isSpeaking);
   const [isBold , setIsBold] = useState(false);
   const [isItalic, setIsItalic] = useState(false);
   const [isUnderline , setIsUnderline] = useState(false);
@@ -19,6 +20,7 @@ function ToolBar() {
   return (
     <div className='toolbar'>
       <div>
+      <i class="fa-regular fa-floppy-disk toolbar-icons fa-lg" onClick={saveToLocalStorage}></i>
        <i class="fa-regular fa-copy toolbar-icons" onClick={(e) => handleClick(e,"copy")}></i>
       <i class="fa-regular fa-paste toolbar-icons" onClick={(e) => handleClick(e,"paste")}></i>
       </div>
@@ -34,7 +36,7 @@ function ToolBar() {
       <i class="fa-solid fa-align-right toolbar-icons" onClick={(e) => handleClick(e,isRightAlign , setIsRightAlign, "right-align")}></i>
       <i class="fa-solid fa-align-center toolbar-icons" onClick={(e) => handleClick(e,isCenterAlign , setIsCenterAlign, "center-align")}></i>
       <input type="color" className='toolbar-icons text-color' onInput={(e) => handleClick(e, "color")}/>
-      <input type="color" className='toolbar-icons text-color' onInput={(e) => handleClick(e, "backgroundColor")}/>
+      <input type="color" className='toolbar-icons text-bg' onInput={(e) => handleClick(e, "backgroundColor")}/>
       </div>
 
        <div className='dropdown-features'>
