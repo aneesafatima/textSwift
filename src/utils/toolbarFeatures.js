@@ -1,7 +1,7 @@
 export function handleClick(e, featureMode, updateFeatureMode, featureStyle) {
   const selection = window.getSelection();
   if (selection.rangeCount > 0) {
-    e.target.classList.toggle("active");
+   
     const range = selection.getRangeAt(0);
 
     if (featureMode === "copy" || featureMode === "delete") {
@@ -43,6 +43,7 @@ export function handleClick(e, featureMode, updateFeatureMode, featureStyle) {
     } 
     
     else {
+      e.target.classList.toggle("active");
       updateFeatureMode(!featureMode);
       if (featureMode)
         extractContents

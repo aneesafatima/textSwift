@@ -195,8 +195,7 @@ margin: 0 10px 0 12px;
 }
 
 .about a{
-text-decoration: none;
-color: #0000EE;
+color: var(--main-text-color);
 font-weight: 700;
 }
 .about a:hover{
