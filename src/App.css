@@ -39,6 +39,15 @@ body{
     transition: all 0.3s linear;
     position: relative;
 }
+.header-right-section i{
+    margin:0 10px;
+    cursor: pointer;
+    color: var(--main-text-color);
+}
+.header-right-section{
+    display: flex;
+    align-items: center;
+}
 .status{
     position: absolute;
     background-color:  #817e7e99;
@@ -139,6 +148,10 @@ body{
     color: inherit;
     text-decoration: none;
     font-size: 1.1rem;
+    margin-left:5px;
+}
+.about-heading:active{
+    transform: scale(0.98);
 }
 
 .about{
@@ -148,7 +161,7 @@ body{
     color: var(--main-text-color);
     width: 100%;
     flex-wrap: wrap;
-    padding:20px 230px ;
+    padding:20px 30px;
 }
 .about h2, .about h3{
     font-weight: 800;
@@ -210,6 +223,8 @@ font-weight: 700;
 }
 .toolbar > div{
    margin: 5px;
+   display: flex;
+   align-items: center;
 }
 
  .toolbar-icons{
@@ -319,10 +334,6 @@ outline: 0;
 .extra-features{
     display: flex;
     align-items: center;
-}
-
-.text-editing-features, .dropdown-features, .extra-features{
-border-left: 1px solid var(--footer-bg);
 }
 
 /* TIMERS UI  */
@@ -439,4 +450,51 @@ transform: scale(1.1);
 }
 .fa-hourglass::after{
   content: "timer";
+}
+.fa-up-down-left-right::after{
+content: "resize";
+}
+
+/*Responsive*/
+
+@media screen and (max-width: 700px){
+    html{
+        font-size: 11px;
+    }
+    .header-right-section i{
+        margin:0 5px; 
+    }
+    .text-editing-features, .dropdown-features, .extra-features{
+        border-left: 0;
+        }
+    .toolbar select{
+        width:70px;
+    }
+    .toolbar{
+        line-height:5px;
+    }
+    .text-editing-features{
+        text-align: center;
+    }
+    .about p,li{
+  font-size:15px;
+    }
+
+}
+@media screen and (min-width: 925px){
+
+    .text-editing-features, .dropdown-features, .extra-features{
+        border-left: 1px solid var(--footer-bg);
+        }
+      
+    }
+
+
+@media screen and (min-width: 650px){
+html{
+    font-size: 15px;
+}
+.about{
+    padding:20px 100px ;
+}
 }

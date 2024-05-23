@@ -47,6 +47,7 @@ export const allFontsLink = (arr) =>{
 //VOICE RECOGNITION
 
 export const handleSpeechToText = (isSpeaking, setIsSpeaking) => {
+let newText;
 const textArea = document.querySelector(".text-area");
 const selection = window.getSelection();
 console.log(isSpeaking)
@@ -56,7 +57,8 @@ let generatedText="";
 recognition.onresult = function(event){
   if(event.results)
   generatedText = event.results[event.results?.length - 1][0].transcript+ ' ';
-  textArea.textContent += generatedText;
+  newText = document.createTextNode(generatedText);
+  textArea.appendChild(newText)
 }
 recognition.onerror = function(event) {
   console.error('Speech recognition error: ', event.error);

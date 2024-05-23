@@ -8,7 +8,7 @@ function About() {
        
      {/* <span>lightweight text editor</span>  */}
       </div>
-      <div class="about-text">
+      <div className="about-text">
 
         <p>
         Ever found yourself lost in a sea of tabs, notifications, and endless distractions while trying to get some writing done? Fear not, textSwift is here to rescue you from the chaos! 🌟
@@ -21,21 +21,21 @@ function About() {
         <h2>Boost Your Productivity</h2>
         <ul>
         <li><strong>Distraction-Free Mode</strong>: Immerse yourself in your writing with a clean, uncluttered workspace.</li>
-        <li><strong>Timer</strong>: Need a little nudge to stay on track? Our built-in timer helps you manage your time effectively, so you can power through your writing goals. <span class="emoji">⏲️</span></li>
-        <li><strong>Voice-to-Text</strong>: Feeling lazy? Just speak, and we'll do the typing for you. Perfect for when your hands need a break, or you just want to dictate your next great idea. <span class="emoji">🗣️➡️📝</span></li>
+        <li><strong>Timer</strong>: Need a little nudge to stay on track?mybuilt-in timer helps you manage your time effectively, so you can power through your writing goals. <span className="emoji">⏲️</span></li>
+        <li><strong>Voice-to-Text</strong>: Feeling lazy? Just speak, and we'll do the typing for you. Perfect for when your hands need a break, or you just want to dictate your next great idea. <span className="emoji">🗣️➡️📝</span></li>
     </ul>
       
     <h2>Extra Bells and Whistles</h2>
     <p>We didn't stop at the basics. textSwift comes with a treasure trove of features designed to enhance your writing experience:</p>
     <ul>
         <li><strong>Git Integration</strong>: Keep track of your revisions and collaborate seamlessly with built-in Git support.🖇️</li>
-        <li><strong>Performance Enhancements</strong>: Our text editor is optimized for speed and efficiency, so you can write without lag or interruption.</li>
+        <li><strong>Performance Enhancements</strong>:mytext editor is optimized for speed and efficiency, so you can write without lag or interruption.</li>
     </ul>
     <h2>Why Choose textSwift?</h2>
-    <p>Because writing should be a pleasure, not a chore! Our mission is to provide a serene and powerful environment where your creativity can flourish. Whether you're crafting the next bestseller or jotting down notes for a meeting, textSwift is your ultimate writing companion.</p>
+    <p>Because writing should be a pleasure, not a chore!mymission is to provide a serene and powerful environment where your creativity can flourish. Whether you're crafting the next bestseller or jotting down notes for a meeting, textSwift is your ultimate writing companion.</p>
 
-    <h2>Join Our Community</h2>
-    <p>Curious to see what textSwift can do for you? Check out our GitHub repository and join our community of writers and developers. Contribute, suggest features, or just see what’s under the hood.🚀</p>
+    <h2>JoinmyCommunity</h2>
+    <p>Curious to see what textSwift can do for you? Check outmyGitHub repository and joinmycommunity of writers and developers. Contribute, suggest features, or just see what’s under the hood.🚀</p>
     <p><a href="https://github.com/repo-link">textSwift GitHub Repository</a></p>
     <p>Remember, writing is an art, and every artist needs the right tools. With textSwift, you’ll have everything you need to create masterpieces, minus the distractions. Ready to unleash your full writing potential? Let's get started!</p>
 

@@ -25,9 +25,13 @@ function TopBar() {
         <h1 className='title'>textswift
         <span>Subtle.Seamless.Craft</span></h1>
       </div>
+      <div className='header-right-section'>
+      <i className="fa-regular fa-moon fa-sun fa-lg darkmode-icon" onClick={toggleDarkMode}></i>
+      <a href='#'><i class="fa-brands fa-github fa-lg"></i></a>
       <div>
-      <i class="fa-regular fa-moon fa-sun fa-lg darkmode-icon" onClick={toggleDarkMode}></i>
-       <Link to="/about" className='about-heading'>ABOUT</Link>
+        <Link to="/about" className='about-heading'>ABOUT</Link>
+      </div>
+       
       </div>
     
     </div>

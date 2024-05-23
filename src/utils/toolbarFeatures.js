@@ -1,12 +1,16 @@
 export function handleClick(e, featureMode, updateFeatureMode, featureStyle) {
   const selection = window.getSelection();
   if (selection.rangeCount > 0) {
+    e.target.classList.toggle("active");
     const range = selection.getRangeAt(0);
 
     if (featureMode === "copy" || featureMode === "delete") {
-      if (featureMode === "copy")
-        navigator.clipboard.writeText(range.toString());
-      else selection.deleteFromDocument();
+      if (featureMode === "copy") {
+        navigator.clipboard
+          .writeText(range.toString())
+          .then(() => updateFeatureMode("copied"))
+          .catch(() => updateFeatureMode("error"));
+      } else selection.deleteFromDocument();
       return;
     }
 
@@ -20,17 +24,25 @@ export function handleClick(e, featureMode, updateFeatureMode, featureStyle) {
       newEl.style[featureMode] =
         featureMode === "fontSize" ? style + "px" : style;
       newEl.appendChild(extractContents);
-    } else if (featureMode === "paste") {
+    } 
+    
+    else if (featureMode === "paste") {
       navigator.clipboard
         .readText()
-        .then((val) => (newEl.textContent = val))
-        .catch((err) => console.log("Text could not be pasted !"));
-    } else if (featureMode === "color" || featureMode === "backgroundColor") {
+        .then((val) => {
+          newEl.textContent = val;
+          updateFeatureMode("pasted");
+        })
+        .catch(() => updateFeatureMode("error !"));
+    }
+    
+    else if (featureMode === "color" || featureMode === "backgroundColor") {
       deletePreviousStyles(extractContents, featureMode);
       newEl.style[featureMode] = e.target.value;
       newEl.appendChild(extractContents);
-    } else {
-      e.target.classList.toggle("active");
+    } 
+    
+    else {
       updateFeatureMode(!featureMode);
       if (featureMode)
         extractContents
@@ -43,6 +55,12 @@ export function handleClick(e, featureMode, updateFeatureMode, featureStyle) {
     range.insertNode(newEl);
     selection.addRange(range);
   }
+
+  else{
+   console.log("hello");
+   window.alert("No text is selected ❌. Please select text to style it.")
+  }
+
 }
 
 const deletePreviousStyles = (extractContents, featureMode) => {
@@ -60,5 +78,17 @@ export const handleDistractionMode = (e) => {
 
 export const saveToLocalStorage = () => {
   const textEl = document.querySelector(".text-area");
-localStorage.setItem("savedText", textEl?.textContent);
+  localStorage.setItem("savedText", textEl?.textContent);
 };
+
+export const handleResize = () =>{
+  if (document.documentElement.requestFullscreen) {
+    document.documentElement.requestFullscreen();
+  } else if (document.documentElement.mozRequestFullScreen) { // Firefox
+    document.documentElement.mozRequestFullScreen();
+  } else if (document.documentElement.webkitRequestFullscreen) { // Chrome, Safari and Opera
+    document.documentElement.webkitRequestFullscreen();
+  } else if (document.documentElement.msRequestFullscreen) { // IE/Edge
+    document.documentElement.msRequestFullscreen();
+  }
+}

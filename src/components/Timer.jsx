@@ -14,7 +14,7 @@ function Timer() {
     }, [timerMins])
   return (
     <div className='timers-container'>
-  <i class="fa-regular fa-hourglass toolbar-icons" onClick={handleTimerUI}></i>
+  <i className="fa-regular fa-hourglass toolbar-icons" onClick={handleTimerUI}></i>
   { Array.isArray(timerMins) ? 
     timerMins.map((el,index) =>(<div className="timer-selections" onClick={(e) => handleSelectedTime(e,index, setTimerMins, timerMins) } key ={index} >
     {el}
