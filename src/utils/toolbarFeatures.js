@@ -1,8 +1,12 @@
 export function handleClick(e, featureMode, updateFeatureMode, featureStyle) {
   const selection = window.getSelection();
   if (selection.rangeCount > 0) {
-   
     const range = selection.getRangeAt(0);
+
+    if (range.collapsed) {
+      window.alert("No text is selected ❌. Please select text to style it.");
+      return;
+    }
 
     if (featureMode === "copy" || featureMode === "delete") {
       if (featureMode === "copy") {
@@ -23,9 +27,7 @@ export function handleClick(e, featureMode, updateFeatureMode, featureStyle) {
       newEl.style[featureMode] =
         featureMode === "fontSize" ? style + "px" : style;
       newEl.appendChild(extractContents);
-    } 
-    
-    else if (featureMode === "paste") {
+    } else if (featureMode === "paste") {
       navigator.clipboard
         .readText()
         .then((val) => {
@@ -33,15 +35,11 @@ export function handleClick(e, featureMode, updateFeatureMode, featureStyle) {
           updateFeatureMode("pasted");
         })
         .catch(() => updateFeatureMode("error !"));
-    }
-    
-    else if (featureMode === "color" || featureMode === "backgroundColor") {
+    } else if (featureMode === "color" || featureMode === "backgroundColor") {
       deletePreviousStyles(extractContents, featureMode);
       newEl.style[featureMode] = e.target.value;
       newEl.appendChild(extractContents);
-    } 
-    
-    else {
+    } else {
       e.target.classList.toggle("active");
       updateFeatureMode(!featureMode);
       if (featureMode)
@@ -55,12 +53,6 @@ export function handleClick(e, featureMode, updateFeatureMode, featureStyle) {
     range.insertNode(newEl);
     selection.addRange(range);
   }
-
-  else{
-
-   window.alert("No text is selected ❌. Please select text to style it.")
-  }
-
 }
 
 const deletePreviousStyles = (extractContents, featureMode) => {
@@ -81,14 +73,17 @@ export const saveToLocalStorage = () => {
   localStorage.setItem("savedText", textEl?.textContent);
 };
 
-export const handleResize = () =>{
+export const handleResize = () => {
   if (document.documentElement.requestFullscreen) {
     document.documentElement.requestFullscreen();
-  } else if (document.documentElement.mozRequestFullScreen) { // Firefox
+  } else if (document.documentElement.mozRequestFullScreen) {
+    // Firefox
     document.documentElement.mozRequestFullScreen();
-  } else if (document.documentElement.webkitRequestFullscreen) { // Chrome, Safari and Opera
+  } else if (document.documentElement.webkitRequestFullscreen) {
+    // Chrome, Safari and Opera
     document.documentElement.webkitRequestFullscreen();
-  } else if (document.documentElement.msRequestFullscreen) { // IE/Edge
+  } else if (document.documentElement.msRequestFullscreen) {
+    // IE/Edge
     document.documentElement.msRequestFullscreen();
   }
-}
+};
