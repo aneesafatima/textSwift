@@ -1,10 +1,10 @@
-# 🖌️ TextEditor Pro
+# 🖌️ textSwift
 
-An advanced text editor built with React and TypeScript. This project was developed as a side project for learning purposes. The app is fully responsive, but the main focus was on functionalities.
+An advanced text editor built with React. This project was developed as a side project for learning purposes. The app is fully responsive, but the main focus was on functionalities.
 
 ## 🦄 Features
 
-Here's what you can do with TextEditor Pro:
+Here's what you can do with textSwift:
 
 - **Choose a Tool**: Select from a variety of text editing tools such as bold, italic, underline, ordered and unordered lists, and text alignment.
 - **Edit Text**: Apply editing features to selected text.
@@ -30,7 +30,7 @@ Here's what you can do with TextEditor Pro:
 
 - **Add Keyboard Shortcuts**: Speed up text editing with keyboard shortcuts for common actions like bold, italic, underline, and text alignment.
 - **Expand Font Selection**: Add more fonts to the font picker.
-- **Introduce More Themes**: Add themes such as dark mode, light mode, and custom themes.
+- **Introduce More Themes**: Add custom themes.
 - **Additional Text Formatting Options**: Include options for strikethrough, and subscript/superscript.
 - **Advanced Text Styling**: Add options for adjusting letter spacing, line height, and text shadows.
 - **Shape Drawing Tools**: Introduce tools to draw shapes like circles, rectangles, and arrows.
@@ -56,4 +56,4 @@ To run the project in your local environment, follow these steps:
 
 ---
 
-Enjoy using TextEditor Pro! If you have any suggestions or encounter any issues, feel free to contribute or open an issue on GitHub.
+Enjoy using TextSwift! If you have any suggestions or encounter any issues, feel free to contribute or open an issue on GitHub.
