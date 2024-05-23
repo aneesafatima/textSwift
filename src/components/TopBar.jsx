@@ -27,7 +27,7 @@ function TopBar() {
       </div>
       <div className='header-right-section'>
       <i className="fa-regular fa-moon fa-sun fa-lg darkmode-icon" onClick={toggleDarkMode}></i>
-      <a href='#'><i class="fa-brands fa-github fa-lg"></i></a>
+      <a href='https://github.com/aneesa04/textSwift-.git' target='_blank' rel='noopener noreferrer'><i className="fa-brands fa-github fa-lg"></i></a>
       <div>
         <Link to="/about" className='about-heading'>ABOUT</Link>
       </div>

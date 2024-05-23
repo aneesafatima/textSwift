@@ -25,7 +25,7 @@ function ToolBar() {
       <i className="fa-regular fa-floppy-disk toolbar-icons fa-xl" onClick={saveToLocalStorage}></i>
        <i className="fa-regular fa-copy toolbar-icons" onClick={(e) => handleClick(e,"copy", setStatus)}></i>
       <i className="fa-regular fa-paste toolbar-icons" onClick={(e) => handleClick(e,"paste", setStatus)}></i>
-      <i class="fa-solid fa-up-down-left-right toolbar-icons" onClick={handleResize}></i>
+      <i className="fa-solid fa-up-down-left-right toolbar-icons" onClick={handleResize}></i>
       </div>
 
        <div className='text-editing-features'>

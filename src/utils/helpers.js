@@ -49,8 +49,6 @@ export const allFontsLink = (arr) =>{
 export const handleSpeechToText = (isSpeaking, setIsSpeaking) => {
 let newText;
 const textArea = document.querySelector(".text-area");
-const selection = window.getSelection();
-console.log(isSpeaking)
 let generatedText="";
 
 !isSpeaking ? recognition.start() :  recognition.abort();
@@ -83,7 +81,6 @@ export const handleSelectedTime = (e, index, setTimerMins, timerMins) => {
  timers.forEach((el,i) => i !== index ? el.style.display = "none" : '');
 setTimerMins(timerMins[index])
   const intervalID = setInterval(()=>{
-console.log(id)
 setTimerMins(prev => prev - 1 )
 id--;
 if(id===0){

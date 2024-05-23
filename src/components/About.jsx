@@ -36,7 +36,7 @@ function About() {
 
     <h2>Join the Community</h2>
     <p>Curious to see what textSwift can do for you? Check out my GitHub repository and contribute, suggest features, or just see what’s under the hood.🚀</p>
-    <p><a href="https://github.com/repo-link">textSwift GitHub Repository</a></p>
+    <p><a href='https://github.com/aneesa04/textSwift-.git' target='_blank' rel='noopener noreferrer'>textSwift GitHub Repository</a></p>
     <p>Remember, writing is an art, and every artist needs the right tools. With textSwift, you’ll have everything you need to create masterpieces, minus the distractions. Ready to unleash your full writing potential? Let's get started!</p>
 
     <p>Hope you enjoy using textSwift as much as I enjoyed creating it! Happy writing!✍️</p>

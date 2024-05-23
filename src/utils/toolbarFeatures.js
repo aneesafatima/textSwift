@@ -20,7 +20,6 @@ export function handleClick(e, featureMode, updateFeatureMode, featureStyle) {
     if (featureMode === "fontFamily" || featureMode === "fontSize") {
       deletePreviousStyles(extractContents, featureMode);
       const style = document.querySelector(".dropdown-" + featureMode).value;
-      console.log(featureMode, style);
       newEl.style[featureMode] =
         featureMode === "fontSize" ? style + "px" : style;
       newEl.appendChild(extractContents);
@@ -58,7 +57,7 @@ export function handleClick(e, featureMode, updateFeatureMode, featureStyle) {
   }
 
   else{
-   console.log("hello");
+
    window.alert("No text is selected ❌. Please select text to style it.")
   }
 
