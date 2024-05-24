@@ -259,11 +259,14 @@ border: 0;
 }
 
 input[type = "color"]::before{
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
     content:"A";
     font-weight:500;
     position: absolute; 
    padding-bottom:7px;
-   
+
   top: 50%; 
   left: 50%; 
   transform: translate(-50%, -50%);
@@ -274,7 +277,9 @@ input[type = "color"]:last-of-type::before{
    content: url("./assets/Fill-icon.svg");
    font-size:0.9rem;
    padding-bottom:5px;
-  
+   -webkit-appearance: none;
+   -moz-appearance: none;
+   appearance: none;
 }
  
 
