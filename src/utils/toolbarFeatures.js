@@ -2,7 +2,7 @@ export function handleClick(e, featureMode, updateFeatureMode, featureStyle) {
   const selection = window.getSelection();
   if (selection.rangeCount > 0) {
     const range = selection.getRangeAt(0);
-
+    console.log(range.innerHTML);
     if (range.collapsed) {
       window.alert("No text is selected ❌. Please select text to style it.");
       return;
@@ -26,6 +26,7 @@ export function handleClick(e, featureMode, updateFeatureMode, featureStyle) {
       const style = document.querySelector(".dropdown-" + featureMode).value;
       newEl.style[featureMode] =
         featureMode === "fontSize" ? style + "px" : style;
+      range.deleteContents();
       newEl.appendChild(extractContents);
     } else if (featureMode === "paste") {
       navigator.clipboard
@@ -39,25 +40,38 @@ export function handleClick(e, featureMode, updateFeatureMode, featureStyle) {
       deletePreviousStyles(extractContents, featureMode);
       newEl.style[featureMode] = e.target.value;
       newEl.appendChild(extractContents);
-    } else {
+    } 
+    else {
       e.target.classList.toggle("active");
       updateFeatureMode(!featureMode);
-      if (featureMode)
-        extractContents
-          .querySelectorAll("." + featureStyle)
-          .forEach((el) => el.classList.remove(featureStyle));
-      else newEl.classList.add(featureStyle);
+      if (featureMode) {
+        console.log("remove styles");
+        extractContents.childNodes.forEach((el) => {
+          el.classList?.remove(featureStyle);
+        });
+        newEl.classList.add(`not-${featureStyle}`);
+      } 
+      else {
+        console.log("add style");
+        newEl.classList.add(featureStyle);
+      }
       newEl.appendChild(extractContents);
     }
-
     range.insertNode(newEl);
+    selection.removeAllRanges();
     selection.addRange(range);
   }
 }
 
 const deletePreviousStyles = (extractContents, featureMode) => {
+  console.log(featureMode);
+  console.log(extractContents.childNodes);
   extractContents.childNodes.forEach((el) => {
-    if (el.style) el.style[featureMode] = "";
+    console.log(el);
+    if (el.style) {
+      el.style[featureMode] = "";
+      console.log(el);
+    }
   });
 };
 

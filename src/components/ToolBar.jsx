@@ -8,7 +8,6 @@ function ToolBar() {
   const myContext = useContext(globalState);
   const {setStatus} = myContext;
   const [isSpeaking, setIsSpeaking] = useState(false);
-  console.log(isSpeaking);
   const [isBold , setIsBold] = useState(false);
   const [isItalic, setIsItalic] = useState(false);
   const [isUnderline , setIsUnderline] = useState(false);

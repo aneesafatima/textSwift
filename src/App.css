@@ -333,6 +333,20 @@ outline: 0;
     display: list-item;
 }
 
+.not-bold{
+    font-weight: 400;
+}
+.not-italic{
+ font-style:normal ;
+}
+.not-underline{
+    text-decoration: underline;
+}
+.not-unordered-list, .not-unordered-list{
+    list-style-type: none;
+}
+
+
 .active{
     background-color: #a4a3a3c0;
     color:rgb(76, 74, 74);;
@@ -505,3 +519,5 @@ html{
     padding:20px 100px ;
 }
 }
+
+
