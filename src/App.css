@@ -246,6 +246,9 @@ color:rgb(76, 74, 74);
  }
  
 input[type = "color"]{
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
 width : 30px;
 height:30px;
 padding:0;
@@ -260,6 +263,7 @@ input[type = "color"]::before{
     font-weight:500;
     position: absolute; 
    padding-bottom:7px;
+   
   top: 50%; 
   left: 50%; 
   transform: translate(-50%, -50%);
