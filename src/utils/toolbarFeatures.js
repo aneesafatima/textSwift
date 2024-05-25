@@ -1,7 +1,7 @@
-function traverseAndProcessNodes(el, featureStyle){
-if(el.classList)
+function traverseAndProcessNodesClasses(el, featureStyle){
+   if(el.classList)
   el.classList.remove(featureStyle);
-el.childNodes?.forEach(traverseAndProcessNodes);
+el.childNodes?.forEach(traverseAndProcessNodesClasses);
 }
 
 
@@ -54,7 +54,7 @@ export function handleClick(e, featureMode, updateFeatureMode, featureStyle) {
         console.log("remove styles");
         extractContents.childNodes.forEach((el) => {
           console.log(el)
-          traverseAndProcessNodes(el, featureStyle)
+          traverseAndProcessNodesClasses(el, featureStyle)
         });
         newEl.classList.add(`not-${featureStyle}`);
       } 
@@ -72,14 +72,10 @@ export function handleClick(e, featureMode, updateFeatureMode, featureStyle) {
 }
 
 const deletePreviousStyles = (extractContents, featureMode) => {
-  console.log(featureMode);
   console.log(extractContents.childNodes);
   extractContents.childNodes.forEach((el) => {
-    console.log(el);
-    if (el.style) {
+    if (el.style) 
       el.style[featureMode] = "";
-      console.log(el);
-    }
   });
 };
 

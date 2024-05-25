@@ -125,8 +125,8 @@ input[type = "color"] {
     caret-color: var(--gray-border)
 }
 .text-area::selection{
-    background: #64bbf4;
-    color: white;
+    background: #64bbf4 !important;
+    color: white !important;
 }
 .heading{
     width:fit-content;
