@@ -25,9 +25,8 @@ Here's what you can do with textSwift:
 - Text editing features only apply to selected text.
 - Limited font options available.
 - Timers don't have a back arrow, meaning that once you select the time, you can't shut it off without refreshing.
-- The underline feature doesn't work very well
 - The input for color isn't working in safari
-- Voice speech is not working properly in safari
+- This application does not work well in iOS devices
 
 ### Possible Improvements:
 
