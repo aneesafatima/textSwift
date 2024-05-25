@@ -31,8 +31,6 @@ function Fonts() {
                 char = String.fromCharCode(aschii)
                 c=0;
               }
-                    
-            
           })
         }
         </select>

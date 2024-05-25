@@ -1,8 +1,14 @@
+function traverseAndProcessNodes(el, featureStyle){
+if(el.classList)
+  el.classList.remove(featureStyle);
+el.childNodes?.forEach(traverseAndProcessNodes);
+}
+
+
 export function handleClick(e, featureMode, updateFeatureMode, featureStyle) {
   const selection = window.getSelection();
   if (selection.rangeCount > 0) {
     const range = selection.getRangeAt(0);
-    console.log(range.innerHTML);
     if (range.collapsed) {
       window.alert("No text is selected ❌. Please select text to style it.");
       return;
@@ -47,7 +53,8 @@ export function handleClick(e, featureMode, updateFeatureMode, featureStyle) {
       if (featureMode) {
         console.log("remove styles");
         extractContents.childNodes.forEach((el) => {
-          el.classList?.remove(featureStyle);
+          console.log(el)
+          traverseAndProcessNodes(el, featureStyle)
         });
         newEl.classList.add(`not-${featureStyle}`);
       } 
@@ -57,6 +64,7 @@ export function handleClick(e, featureMode, updateFeatureMode, featureStyle) {
       }
       newEl.appendChild(extractContents);
     }
+    range.deleteContents();
     range.insertNode(newEl);
     selection.removeAllRanges();
     selection.addRange(range);

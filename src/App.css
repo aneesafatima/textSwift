@@ -349,7 +349,7 @@ outline: 0;
  font-style:normal ;
 }
 .not-underline{
-    text-decoration: underline;
+    text-decoration: none;
 }
 .not-unordered-list, .not-unordered-list{
     list-style-type: none;
