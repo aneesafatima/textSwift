@@ -1,6 +1,7 @@
 function traverseAndProcessNodesClasses(el, featureStyle) {
+  console.log(el)
   if (el.classList) el.classList.remove(featureStyle);
-  el.childNodes?.forEach(traverseAndProcessNodesClasses);
+  el.childNodes?.forEach((node) => traverseAndProcessNodesClasses(node, featureStyle));
 }
 
 export function handleClick(e, featureMode, updateFeatureMode, featureStyle) {
@@ -57,7 +58,6 @@ export function handleClick(e, featureMode, updateFeatureMode, featureStyle) {
       if (featureMode) {
         console.log("remove styles");
         extractContents.childNodes.forEach((el) => {
-          console.log(el);
           traverseAndProcessNodesClasses(el, featureStyle);
         });
         newEl.classList.add(`not-${featureStyle}`);
