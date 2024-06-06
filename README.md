@@ -1,6 +1,6 @@
 # 🖌️ textSwift
 
-An advanced text editor built with React. This project was developed as a side project for learning purposes. The app is fully responsive, but the main focus was on functionalities.
+An advanced text editor built from scratch with React. This project was developed as a side project for learning purposes. The app is fully responsive, but the main focus was on functionalities.
 
 ## 🦄 Features
 
