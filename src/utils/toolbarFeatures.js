@@ -1,7 +1,9 @@
 function traverseAndProcessNodesClasses(el, featureStyle) {
-  console.log(el)
+  console.log(el);
   if (el.classList) el.classList.remove(featureStyle);
-  el.childNodes?.forEach((node) => traverseAndProcessNodesClasses(node, featureStyle));
+  el.childNodes?.forEach((node) =>
+    traverseAndProcessNodesClasses(node, featureStyle)
+  );
 }
 
 export function handleClick(e, featureMode, updateFeatureMode, featureStyle) {
@@ -15,11 +17,16 @@ export function handleClick(e, featureMode, updateFeatureMode, featureStyle) {
         document.querySelector(".text-area").appendChild(newEl);
         updateFeatureMode("pasted");
       })
-      .catch((err) => {updateFeatureMode("error !") ; console.log(err)});
-  }
-    else if (selection.rangeCount > 0) {
+      .catch((err) => {
+        updateFeatureMode("error !");
+        console.log(err);
+      });
+  } else if (selection.rangeCount > 0) {
     const range = selection.getRangeAt(0);
-
+    if (range.collapsed) {
+      window.alert("No text is selected ❌. Please select text to edit.");
+      return;
+    }
     if (featureMode === "copy") {
       navigator.clipboard
         .writeText(range.toString())
@@ -30,16 +37,11 @@ export function handleClick(e, featureMode, updateFeatureMode, featureStyle) {
 
     if (featureMode === "delete") {
       selection.deleteFromDocument();
-      return;
-    }
-
-    if (range.collapsed) {
-      window.alert("No text is selected ❌. Please select text to style it.");
+      updateFeatureMode(document.querySelector(".text-area").textContent);
       return;
     }
 
     const extractContents = range.extractContents();
-
 
     if (featureMode === "fontFamily" || featureMode === "fontSize") {
       deletePreviousStyles(extractContents, featureMode);
@@ -75,7 +77,6 @@ export function handleClick(e, featureMode, updateFeatureMode, featureStyle) {
 }
 
 const deletePreviousStyles = (extractContents, featureMode) => {
-  console.log(extractContents.childNodes);
   extractContents.childNodes.forEach((el) => {
     if (el.style) el.style[featureMode] = "";
   });
@@ -88,9 +89,10 @@ export const handleDistractionMode = (e) => {
   bottomBar.classList.toggle("distraction-mode-toggle");
 };
 
-export const saveToLocalStorage = () => {
+export const saveToLocalStorage = (setStatus) => {
   const textEl = document.querySelector(".text-area");
   localStorage.setItem("savedText", textEl?.textContent);
+  setStatus("Saved to Local Storage");
 };
 
 export const handleResize = () => {
